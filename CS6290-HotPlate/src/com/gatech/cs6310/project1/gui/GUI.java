@@ -32,7 +32,7 @@ public class GUI extends JPanel {
 		add(simulationList, BorderLayout.LINE_START);
 		
 		JPanel panel = new JPanel(new BorderLayout());
-		//panel.setSize(600, 600);
+		panel.setSize(100, 100);
 		panel.add(editTextLeft, BorderLayout.EAST);
 		panel.add(editTextTop, BorderLayout.NORTH);
 		panel.add(editTextRight, BorderLayout.SOUTH);

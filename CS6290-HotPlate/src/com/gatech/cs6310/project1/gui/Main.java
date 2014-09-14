@@ -18,6 +18,7 @@ public class Main {
 		frame.setContentPane(new GUI());
 		frame.pack();
 		frame.setVisible(true);
+		frame.setSize(1000, 600);
 		frame.setLayout(null);
 	}
 
