@@ -18,6 +18,9 @@ public class GUI extends JPanel {
 		JTextArea editTextRight = new JTextArea("R");
 		JTextArea editTextTop = new JTextArea("T");
 		JTextArea editTextBottom = new JTextArea("B");
+		JTextArea outputWindow = new JTextArea("Sample Output");
+		
+		
 		simulationList.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -25,25 +28,31 @@ public class GUI extends JPanel {
 				String returnItem = (String) tmpCombo.getSelectedItem();
 			}
 		});
-		add(simulationList, BorderLayout.WEST);
-		add(editTextLeft, BorderLayout.SOUTH);
+		this.setLayout(new BorderLayout());
+		add(simulationList, BorderLayout.LINE_START);
+		
+		JPanel panel = new JPanel(new BorderLayout());
+		//panel.setSize(600, 600);
+		panel.add(editTextLeft, BorderLayout.EAST);
+		panel.add(editTextTop, BorderLayout.NORTH);
+		panel.add(editTextRight, BorderLayout.SOUTH);
+		panel.add(editTextBottom, BorderLayout.WEST);
+		add(panel, BorderLayout.CENTER);	
+		JPanel bpanel = new JPanel(new BorderLayout());		
+		bpanel.add(runSimulationButton, BorderLayout.PAGE_START);
+		bpanel.add(outputWindow, BorderLayout.PAGE_END);
+		add(bpanel,BorderLayout.PAGE_END);
 
-		add(editTextTop, BorderLayout.NORTH);
-		add(editTextRight, BorderLayout.SOUTH);
-		add(editTextBottom, BorderLayout.SOUTH);
-		add(runSimulationButton, BorderLayout.WEST);
+
+//		
+//		JTextArea e = new JTextArea("Basdfdsf");
+//		panel.add(e,BorderLayout.PAGE_END);
+
+
+		
 
 	}
-	public static void main(String s[]) {
-		JFrame frame = new JFrame("Heated Plate Simulation");
-		frame.addWindowListener(new WindowAdapter() {
+	
+	
 
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-		frame.setContentPane(new GUI());
-		frame.pack();
-		frame.setVisible(true);
-	}
 }
