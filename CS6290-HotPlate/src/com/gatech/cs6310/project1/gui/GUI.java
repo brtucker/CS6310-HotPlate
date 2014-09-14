@@ -11,18 +11,28 @@ public class GUI extends JPanel {
 	diffusion diffusionMethod;
 
 	public GUI() {
-		String[] comboTypes = { "Tpdahp", "Tpfahp", "Twfahp","Tpdohp" };
-		JComboBox simulationList = new JComboBox(comboTypes);
+		String[] equipermentList = { "Tpdahp", "Tpfahp", "Twfahp","Tpdohp" };
+		JComboBox simulationList = new JComboBox(equipermentList);
+		JButton runSimulationButton = new JButton("Run");
+		JTextArea editTextLeft = new JTextArea("L");
+		JTextArea editTextRight = new JTextArea("R");
+		JTextArea editTextTop = new JTextArea("T");
+		JTextArea editTextBottom = new JTextArea("B");
 		simulationList.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				JComboBox jcmbType = (JComboBox) e.getSource();
-				String cmbType = (String) jcmbType.getSelectedItem();
+				JComboBox tmpCombo = (JComboBox) e.getSource();
+				String returnItem = (String) tmpCombo.getSelectedItem();
 			}
 		});
-		setLayout(new BorderLayout());
-		add(simulationList, BorderLayout.NORTH);
-		setBorder(BorderFactory.createEmptyBorder(300, 300, 300, 300));
+		add(simulationList, BorderLayout.WEST);
+		add(editTextLeft, BorderLayout.SOUTH);
+
+		add(editTextTop, BorderLayout.NORTH);
+		add(editTextRight, BorderLayout.SOUTH);
+		add(editTextBottom, BorderLayout.SOUTH);
+		add(runSimulationButton, BorderLayout.WEST);
+
 	}
 	public static void main(String s[]) {
 		JFrame frame = new JFrame("Heated Plate Simulation");
