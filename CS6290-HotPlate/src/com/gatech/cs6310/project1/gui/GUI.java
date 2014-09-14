@@ -3,14 +3,17 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.gatech.cs6310.project1.experiments.diffusion;
+
 public class GUI extends JPanel {
+	
+	
+	diffusion diffusionMethod;
 
 	public GUI() {
 		String[] comboTypes = { "Tpdahp", "Tpfahp", "Twfahp","Tpdohp" };
-		// Create the combo box, and set 2nd item as Default
-		JComboBox comboTypesList = new JComboBox(comboTypes);
-		comboTypesList.setSelectedIndex(2);
-		comboTypesList.addActionListener(new ActionListener() {
+		JComboBox simulationList = new JComboBox(comboTypes);
+		simulationList.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				JComboBox jcmbType = (JComboBox) e.getSource();
@@ -18,7 +21,7 @@ public class GUI extends JPanel {
 			}
 		});
 		setLayout(new BorderLayout());
-		add(comboTypesList, BorderLayout.NORTH);
+		add(simulationList, BorderLayout.NORTH);
 		setBorder(BorderFactory.createEmptyBorder(300, 300, 300, 300));
 	}
 	public static void main(String s[]) {
