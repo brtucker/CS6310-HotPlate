@@ -1,0 +1,21 @@
+package com.gatech.cs6310.project1.models;
+
+
+public class SimulationResult {
+	public int duration;
+	public int iterations;
+	public int memoryUsage;
+	public Plate[] plates;
+	
+	
+	public SimulationResult(int dimension) {
+		// TODO Auto-generated constructor stub
+		Plate newPlate = new Plate(dimension);
+		Plate oldPlate = new Plate(dimension);
+		
+		plates[0] = oldPlate;
+		plates[1] = newPlate;
+	}
+
+	
+}

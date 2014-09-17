@@ -1,0 +1,24 @@
+package com.gatech.cs6310.project1.experiments;
+
+import com.gatech.cs6310.project1.models.DiffusionMethod;
+import com.gatech.cs6310.project1.models.SimulationResult;
+
+public class TpdahpSimulation extends DiffusionMethod{
+	
+	public TpdahpSimulation(){
+		
+	}
+	
+	public TpdahpSimulation(int dimension, double tempLeft,
+							double tempTop, double tempRight,
+							double tempButtom){
+		
+	}
+	
+	
+	public SimulationResult simulate(int dimension, double tempLeft,
+									double tempTop, double tempRight,
+									double tempButtom){
+		DiffusionMethod diffuse = new DiffusionMethod();
+	}
+}

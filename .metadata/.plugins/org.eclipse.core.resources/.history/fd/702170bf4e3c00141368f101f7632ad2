@@ -1,0 +1,12 @@
+package com.gatech.cs6310.project1.models;
+
+import com.gatech.cs6310.project1.models.Plate;
+
+public class SimulationResult {
+	public int duration;
+	public int iterations;
+	public int memoryUsage;
+	public Plate[] plates;
+	
+	
+}

@@ -1,0 +1,49 @@
+package com.gatech.cs6310.project1.experiments;
+
+import com.gatech.cs6310.project1.models.*;
+
+public class TpdahpSimulation extends DiffusionMethod{
+	
+	public TpdahpSimulation(){
+		
+	}
+	
+	public TpdahpSimulation(int dimension, double tempLeft,
+							double tempTop, double tempRight,
+							double tempButtom){
+		
+	}
+	
+	
+	public void simulate(int dimension, double tempLeft,
+									double tempTop, double tempRight,
+									double tempBottom){
+		DiffusionMethod diffuse = new DiffusionMethod();
+		
+		double[][] oldPlate = new double[dimension + 2][dimension + 2];
+		double[][] newPlate = new double[dimension + 2][dimension + 2];
+		
+		oldPlate = initializePlate(oldPlate, tempTop, tempBottom, tempLeft, tempRight);
+		newPlate = initializePlate(newPlate, 0,0,0,0);
+		
+		int iterationsMax, iterations;
+		boolean isNoLongerChanging = false;
+		while(iterations < iterationsMax || isNoLongerChanging){
+			
+		}
+		
+		
+	}
+	
+	private double[][] initializePlate(double[][] plate, double top,
+									   double bottom, double left, double right){
+		int dimension = plate[0].length;
+		int halfDimension = dimension/2;
+		plate[halfDimension][0] = left;
+		plate[0][halfDimension] = top;
+		plate[dimension][halfDimension] = bottom;
+		plate[halfDimension][dimension] = right;
+		
+		return plate;
+	}
+}

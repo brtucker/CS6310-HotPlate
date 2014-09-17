@@ -1,0 +1,31 @@
+package com.gatech.cs6310.project1.models;
+
+public abstract class DiffusionMethod {
+	int maxDuration = 0;
+	int maxIterations = 0;
+	double stabilizationDelta = 1.0;
+	
+	/*
+	public DiffusionMethod(int maxDuration, int maxIterations, double stabilizationDelta){
+		DiffusionMethod newDiffusion = new DiffusionMethod();
+		newDiffusion.maxDuration = maxDuration;
+		newDiffusion.maxIterations = maxIterations;
+		newDiffusion.stabilizationDelta = stabilizationDelta;
+	}
+	*/
+	
+	public DiffusionMethod() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public abstract SimulationResult simulate(int dimension, double tempLeft,
+					double tempTop, double tempRight,
+					double tempBotton){
+		
+		SimulationResult simulation = new SimulationResult(dimension);
+		
+		
+		return null;
+	}
+					
+}
