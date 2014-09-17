@@ -1,13 +1,10 @@
 package com.gatech.cs6310.project1.Tpfahp;
 
-import com.gatech.cs6310.project1.models.DiffusionMethod;
-
 public class TpfahpSimulation {
 
 	public String simulate(int dimension, float tempLeft,
 			float tempTop, float tempRight,
 			float tempBottom){
-		DiffusionMethod diffuse = new DiffusionMethod();
 
 		float[][] oldPlate = new float[dimension + 2][dimension + 2];
 		float[][] newPlate = new float[dimension + 2][dimension + 2];
