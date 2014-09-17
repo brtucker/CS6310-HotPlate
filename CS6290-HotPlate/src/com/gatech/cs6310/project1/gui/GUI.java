@@ -38,33 +38,35 @@ public class GUI extends JPanel{
 		pane.add(editTextLeft);
 		pane.add(outputWindow);
 		
-		DrawnGrid dg = new DrawnGrid(BORDER_SIZE, BORDER_SIZE, 
+		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
                 WINDOW_SIZE, WINDOW_SIZE);
 		
 		pane.add(dg);
 
 		
 		Insets insets = pane.getInsets();
-		Dimension size = simulationList.getPreferredSize();
+		Dimension size = dg.getPreferredSize();
 
-		
+		dg.setBounds(25 + insets.left, 50 + insets.top, size.width,
+				size.height);
+		size = simulationList.getPreferredSize();
 		simulationList.setBounds(25 + insets.left, 5 + insets.top, size.width,
 				size.height);
 		size = runSimulationButton.getPreferredSize();
 		runSimulationButton.setBounds(55 + insets.left, 40 + insets.top, size.width, size.height);
 		size = outputWindow.getPreferredSize();
-		outputWindow.setBounds(20 + insets.left, 250 + insets.top, size.width + 500,
-				size.height + 100);
+		outputWindow.setBounds(20 + insets.left, 200 + insets.top, size.width + 395,
+				size.height + 140);
 		size = editTextDimension.getPreferredSize();
-		editTextDimension.setBounds(200 + insets.left, 125 + insets.top, size.width + 50,
+		editTextDimension.setBounds(175 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);
-		editTextLeft.setBounds(300 + insets.left, 125 + insets.top, size.width + 50,
+		editTextLeft.setBounds(300 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);
-		editTextRight.setBounds(440 + insets.left, 125 + insets.top, size.width + 50,
+		editTextRight.setBounds(440 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);		
-		editTextTop.setBounds(370 + insets.left, 75 + insets.top, size.width + 50,
+		editTextTop.setBounds(370 + insets.left, 25 + insets.top, size.width + 50,
 				size.height);
-		editTextBottom.setBounds(370 + insets.left, 175 + insets.top, size.width + 50,
+		editTextBottom.setBounds(370 + insets.left, 125 + insets.top, size.width + 50,
 				size.height);
 		
 		
@@ -94,7 +96,7 @@ public class GUI extends JPanel{
 	 /**
      * Size of the containing window in pixels
      */
-    private final static int WINDOW_SIZE = 400;
+    private final static int WINDOW_SIZE = 600;
     
     /**
      * Amount of border space around the DrawnGrid in pixels
