@@ -18,7 +18,8 @@ public class TpdahpSimulation extends DiffusionMethod{
 	public String simulate(int dimension, double tempLeft,
 									double tempTop, double tempRight,
 									double tempBottom){
-	
+		DiffusionMethod diffuse = new DiffusionMethod();
+		
 		double[][] oldPlate = new double[dimension + 2][dimension + 2];
 		double[][] newPlate = new double[dimension + 2][dimension + 2];
 		
