@@ -125,12 +125,12 @@ public class DrawnGrid extends JPanel {
     /**
      * Number of rows of cells in the DrawnGrid 
      */
-    private static final int NUMBER_OF_ROWS = 6;
+    public static int NUMBER_OF_ROWS = 101;
     
     /**
      * Number of cells in a row 
      */
-    private static final int NUMBER_OF_COLUMNS = 6;
+    public static int NUMBER_OF_COLUMNS = 101;
     
     /**
      * The height of a cell in pixels 
