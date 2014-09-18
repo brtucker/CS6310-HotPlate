@@ -1,0 +1,14 @@
+package com.gatech.cs6310.project1.Tpdohp;
+
+public class TpdohpSimulation {
+
+	public String simulate(int dimension, double leftTemp, double topTemp,
+			double rightTemp, double bottomTemp) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return null;
+	}
+
+}

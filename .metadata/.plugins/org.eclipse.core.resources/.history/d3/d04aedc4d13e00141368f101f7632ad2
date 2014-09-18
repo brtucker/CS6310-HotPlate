@@ -46,7 +46,9 @@ public class TpdohpSimulation {
 			
 		}
 		
-		return newPlate.toTableFormattedString();
+		
+		
+		return null;
 	}
 
 }

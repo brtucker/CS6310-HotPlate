@@ -74,25 +74,8 @@ public class Plate {
 	}
 
 	public String toTableFormattedString(){
-		Iterator<String> keySetIterator = cellMap.keySet().iterator();
-		String result = "";
-		int index = 0;
-		
-		while(keySetIterator.hasNext()){
-			String key = keySetIterator.next();
-			index++;
-			
-			result += cellMap.get(key).temp + " ";
-			
-			//System.out.println("key: " + key + " value: " + cellMap.get(key));
-			if(index%this.dimension == 0){
-				result += "\n";
-			}
-			
-		}
-		return result;
+		return null;
 	}
-
 
 	public double getTemp(int outerIndex, int innerIndex) {
 		return this.cellMap.get(outerIndex + " " + innerIndex).temp;

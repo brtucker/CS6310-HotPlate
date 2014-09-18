@@ -1,0 +1,55 @@
+package com.gatech.cs6310.project1.models;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+public class Plate {
+	public int dimension;
+	HashMap<String, Cell> cellMap = new HashMap<String,Cell>();
+	
+	public Plate(int dimension) {
+		// TODO Auto-generated constructor stub
+		
+	}
+
+	public void initialize(double top, double bottom, 
+						double left, double right){
+		int halfDimension = this.dimension/2;	
+		
+		for(int outerIndex = 1; outerIndex <= dimension; outerIndex++){
+			for(int innerIndex = 1; innerIndex <= dimension; innerIndex++){
+				this.cellMap.put(outerIndex + " " + innerIndex, new Cell(outerIndex, innerIndex, 0.0));
+			}
+		}
+		
+		
+		
+	}
+	
+	public Cell getCell(int x, int y){
+		return this.cellMap.get(x + " " + y);
+	}
+	
+	public List<Cell> getCellByRow(int x){
+		List<Cell> row = new ArrayList<Cell>();
+		
+		Iterator<String> keySetIterator = cellMap.keySet().iterator();
+
+		while(keySetIterator.hasNext()){
+		  String key = keySetIterator.next();
+		  
+		  if(key.contains(String.valueOf(x))){
+			  row.add(cellMap.get(key));
+		  }
+	
+		}
+		
+		return row;
+	}
+
+	public String toTableFormattedString(){
+		return null;
+	}
+}

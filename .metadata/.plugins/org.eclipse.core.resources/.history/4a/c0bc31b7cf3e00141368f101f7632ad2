@@ -1,0 +1,21 @@
+package com.gatech.cs6310.project1.Tpdohp;
+
+import com.gatech.cs6310.project1.models.*;
+
+public class TpdohpSimulation {
+
+	public String simulate(int dimension, double leftTemp, double topTemp,
+			double rightTemp, double bottomTemp) {
+		// TODO Auto-generated method stub
+		
+		Plate oldPlate = new Plate(dimension);
+		Plate newPlate = new Plate(dimension);
+		
+		
+		
+		
+		
+		return null;
+	}
+
+}

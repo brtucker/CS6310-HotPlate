@@ -1,0 +1,30 @@
+package com.gatech.cs6310.project1.Tpdohp;
+
+import com.gatech.cs6310.project1.models.*;
+
+public class TpdohpSimulation {
+
+	public String simulate(int dimension, double leftTemp, double topTemp,
+			double rightTemp, double bottomTemp) {
+		// TODO Auto-generated method stub
+		
+		Plate oldPlate = new Plate(dimension);
+		Plate newPlate = new Plate(dimension);
+		
+		int iterationsMax = 0, iterations = 0;
+		boolean isNoLongerChanging = false;
+		
+		iterationsMax = dimension * dimension * dimension;
+		
+		while(iterations < iterationsMax || isNoLongerChanging){
+			
+			
+			
+		}
+		
+		
+		
+		return null;
+	}
+
+}

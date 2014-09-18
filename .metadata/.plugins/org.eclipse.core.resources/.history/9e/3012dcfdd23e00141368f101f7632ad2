@@ -90,9 +90,15 @@ public class Plate {
 			}
 			
 		}
+			
+		
 		return result;
 	}
 
+	private Cell Cell() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public double getTemp(int outerIndex, int innerIndex) {
 		return this.cellMap.get(outerIndex + " " + innerIndex).temp;

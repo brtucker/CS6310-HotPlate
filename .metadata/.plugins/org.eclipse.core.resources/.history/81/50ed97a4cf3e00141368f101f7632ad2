@@ -14,10 +14,6 @@ public class Plate {
 		
 	}
 
-	public Plate() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public void initialize(double top, double bottom, 
 						double left, double right){
 		int halfDimension = this.dimension/2;	
@@ -41,19 +37,13 @@ public class Plate {
 			}
 		}
 		
+		
+		
+		
 	}
 	
 	public Cell getCell(int x, int y){
 		return this.cellMap.get(x + " " + y);
-	}
-	
-	public void setCell(int x, int y, double temp){
-		Cell updateCell = new Cell();
-		updateCell = this.cellMap.get(x + " "+ y);
-		this.cellMap.remove(x + " " + y);
-		
-		updateCell.temp = temp;
-		this.cellMap.put(x+" "+y, updateCell);
 	}
 	
 	public List<Cell> getCellByRow(int x){
@@ -74,27 +64,6 @@ public class Plate {
 	}
 
 	public String toTableFormattedString(){
-		Iterator<String> keySetIterator = cellMap.keySet().iterator();
-		String result = "";
-		int index = 0;
-		
-		while(keySetIterator.hasNext()){
-			String key = keySetIterator.next();
-			index++;
-			
-			result += cellMap.get(key).temp + " ";
-			
-			//System.out.println("key: " + key + " value: " + cellMap.get(key));
-			if(index%this.dimension == 0){
-				result += "\n";
-			}
-			
-		}
-		return result;
-	}
-
-
-	public double getTemp(int outerIndex, int innerIndex) {
-		return this.cellMap.get(outerIndex + " " + innerIndex).temp;
+		return null;
 	}
 }

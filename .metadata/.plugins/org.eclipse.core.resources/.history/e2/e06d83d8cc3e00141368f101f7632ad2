@@ -10,8 +10,4 @@ public class Cell {
 		this.y = y;
 		this.temp = d;
 	}
-
-	public Cell() {
-		// TODO Auto-generated constructor stub
-	}
 }

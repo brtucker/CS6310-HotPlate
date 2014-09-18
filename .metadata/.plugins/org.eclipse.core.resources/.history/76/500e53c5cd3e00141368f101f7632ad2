@@ -1,0 +1,53 @@
+package com.gatech.cs6310.project1.models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Plate {
+	public int dimension;
+	public ArrayList<Cell> cells;
+	
+	
+	public Plate(int dimension) {
+		// TODO Auto-generated constructor stub
+		
+	}
+
+	public void initialize(double top, double bottom, 
+						double left, double right){
+		int halfDimension = this.dimension/2;	
+		
+		this.cells = new ArrayList<Cell>();
+		
+		for(int outerIndex = 1; outerIndex <= dimension; outerIndex++){
+			for(int innerIndex = 1; innerIndex <= dimension; innerIndex++){
+				this.cells.add(new Cell(outerIndex, innerIndex, 0.0));
+			}
+		}
+		
+		
+		
+	}
+	
+	public Cell getCell(int x, int y){
+		Cell returnedCell = new Cell();
+		
+		
+		
+		return null;
+	}
+	
+	public List<Cell> getCellByRow(int x){
+		List<Cell> row = new ArrayList<Cell>();
+		
+		for(int index = 0; index < plate[x].length; index++){
+			row.add(plate[x][index]);
+		}
+		
+		return row;
+	}
+
+	public String toTableFormattedString(){
+		return null;
+	}
+}
