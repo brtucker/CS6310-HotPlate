@@ -1,4 +1,4 @@
-package com.gatech.cs6310.project1.gui;
+package com.gatech.cs6310.project1.Gallhp;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
