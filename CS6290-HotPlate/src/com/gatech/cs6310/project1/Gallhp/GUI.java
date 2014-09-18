@@ -4,6 +4,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import com.gatech.cs6310.project1.Tpdahp.TpdahpSimulation;
+
 
 public class GUI extends JPanel{
 	
@@ -20,11 +22,11 @@ public class GUI extends JPanel{
 		JButton runSimulationButton = new JButton("Run");
 		
 		// input/output boxes
-		final JTextArea editTextDimension = new JTextArea("D");		
-		final JTextArea editTextLeft = new JTextArea("L");
-		final JTextArea editTextRight = new JTextArea("R");
-		final JTextArea editTextTop = new JTextArea("T");
-		final JTextArea editTextBottom = new JTextArea("B");
+		final JTextArea editTextDimension = new JTextArea("5");		
+		final JTextArea editTextLeft = new JTextArea("5");
+		final JTextArea editTextRight = new JTextArea("5");
+		final JTextArea editTextTop = new JTextArea("5");
+		final JTextArea editTextBottom = new JTextArea("5");
 		final JTextArea outputWindow = new JTextArea("Sample Output");
 		final JTextArea editTextMaxDuration = new JTextArea("maxDuration");
 		final JTextArea editTextMaxIterations = new JTextArea("maxIterations");
@@ -105,7 +107,16 @@ public class GUI extends JPanel{
 		runSimulationButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e){
-				outputWindow.setText(editTextDimension.getText());
+
+				
+				TpdahpSimulation simulation = new TpdahpSimulation();
+//				int dimension = Integer.parseInt(editTextDimension.getText());
+//				double leftTemp = Double.parseDouble(editTextLeft.getText());
+//				double rightTemp = Double.parseDouble(editTextRight.getText());
+//				double topTemp = Double.parseDouble(editTextTop.getText());
+//				double bottomTemp = Double.parseDouble(editTextBottom.getText());
+				String output = simulation.simulate(5, 5, 5, 5, 5);
+				outputWindow.setText(output);
 			}
 		});
 		
