@@ -32,28 +32,27 @@ public class Simulation extends DiffusionMethod{
 			Plate plt = new Plate(dimension);
 			int d = (int)Math.sqrt(newPlate.size());
 			int outerCnt = 0;
-			for(int outerIndex = d + 1; outerIndex < newPlate.size() - d; outerIndex+=5)
+			for(int outerIndex = d + 1; outerCnt < d-2; outerIndex+=d)
 			{
-				for(int innerIndex = outerIndex + 1; innerIndex <= newPlate.size(); innerIndex++)
+				int innerCnt= 0;
+				for(int innerIndex = outerIndex + 1; innerIndex < outerIndex+d-1 ; innerIndex++)
 				{
-					int innerCnt= 0;
-					if (innerIndex % 5 != 0) //right side don't do anything
-					{
-						int cellpos = innerIndex;
-						int top = cellpos - d;
-						int bottom = cellpos + d;
-						int left = cellpos - 1;
-						int right = cellpos + 1;
-						double t = (oldPlate.get(top).getTemp() + oldPlate.get(bottom).getTemp()
-								+ oldPlate.get(left).getTemp() + oldPlate.get(right).getTemp()) /4.0;
-						newPlate.get(cellpos).setTemp( t ); 
-						
-						plt.setCell(outerCnt, innerCnt, t);
-						innerCnt++;
-					}
+					int cellpos = innerIndex;
+					int top = cellpos - d;
+					int bottom = cellpos + d;
+					int left = cellpos - 1;
+					int right = cellpos + 1;
+					//System.out.println("c: " + cellpos + "\t: " + top + "\tb: " + bottom + "\tl: " + left + "\tr: " + right);
+					double t = (oldPlate.get(top).getTemp() + oldPlate.get(bottom).getTemp()
+							+ oldPlate.get(left).getTemp() + oldPlate.get(right).getTemp()) /4.0;
+					newPlate.get(cellpos).setTemp( t ); 
+					//System.out.println("outercnt: " + outerCnt + "\tinnerCnt: " + innerCnt);
+					plt.setCell(outerCnt, innerCnt, t);
+					innerCnt++;
 				}
 				outerCnt++;
 			}
+
 			plates.add(plt);
 			//Iteration count
 			iterations++;
@@ -88,16 +87,18 @@ public class Simulation extends DiffusionMethod{
 	public String toString() {
 		String result = "";
 		int dimension = (int)Math.sqrt(newPlate.size());
-		for(int outerIndex = dimension + 1; outerIndex < newPlate.size() - dimension; outerIndex+=5)
+		int cnt = 0;
+		for(int outerIndex = dimension + 1; cnt < dimension-2; outerIndex+=dimension)
 		{
-			for(int innerIndex = outerIndex + 1; innerIndex <= newPlate.size(); innerIndex++)
+			for(int innerIndex = outerIndex + 1; innerIndex <= outerIndex+dimension-1; innerIndex++)
 			{
-				if (innerIndex % 5 != 0) //right side don't do anything
+				if (innerIndex % dimension != 0) //right side don't do anything
 				{
 					result += String.format( "%.2f", newPlate.get(innerIndex).getTemp()) + "\t";
 				}
 			}
 			result += "\n";
+			cnt++;
 		}
 		return result;
 	}
