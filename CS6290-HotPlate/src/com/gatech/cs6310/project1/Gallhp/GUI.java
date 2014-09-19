@@ -1,10 +1,12 @@
 package com.gatech.cs6310.project1.Gallhp;
+import com.gatech.cs6310.project1.common.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 
-import com.gatech.cs6310.project1.Tpdahp.TpdahpSimulation;
+import com.gatech.cs6310.project1.Tpdahp.Simulation;
 
 
 public class GUI extends JPanel{
@@ -109,14 +111,14 @@ public class GUI extends JPanel{
 			public void actionPerformed(ActionEvent e){
 
 				
-				TpdahpSimulation simulation = new TpdahpSimulation();
+				DiffusionMethod simulation = new Simulation();
 //				int dimension = Integer.parseInt(editTextDimension.getText());
 //				double leftTemp = Double.parseDouble(editTextLeft.getText());
 //				double rightTemp = Double.parseDouble(editTextRight.getText());
 //				double topTemp = Double.parseDouble(editTextTop.getText());
 //				double bottomTemp = Double.parseDouble(editTextBottom.getText());
-				String output = simulation.simulate(5, 5, 5, 5, 5);
-				outputWindow.setText(output);
+				SimulationResult output = simulation.simulate(5, 5, 5, 5, 5);
+				//outputWindow.setText(output);
 			}
 		});
 		
