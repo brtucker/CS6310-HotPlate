@@ -1,6 +1,7 @@
 package com.gatech.cs6310.project1.Tpdohp;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.gatech.cs6310.project1.common.DiffusionMethod;
 import com.gatech.cs6310.project1.common.Plate;
@@ -8,8 +9,8 @@ import com.gatech.cs6310.project1.common.SimulationResult;
 
 public class Simulation extends DiffusionMethod{
 	public Simulation() {	}
-	HashMap<Integer, Point> oldPlate = null;
-	HashMap<Integer, Point> newPlate = null;
+	Map<Integer, LatticePoint> oldPlate = null;
+	Map<Integer, LatticePoint> newPlate = null;
 	//double[][] oldPlate = null;
 	//double[][] newPlate = null;
 	public SimulationResult simulate(int dimension, double tempLeft, double tempTop, double tempRight, double tempBottom)
@@ -67,7 +68,7 @@ public class Simulation extends DiffusionMethod{
 			else
 			{
 				//Swap Plates
-				HashMap<Integer, Point> tempPlate;
+				Map<Integer, LatticePoint> tempPlate;
 				tempPlate = oldPlate;
 				oldPlate = newPlate;
 				newPlate = tempPlate;
@@ -110,7 +111,7 @@ public class Simulation extends DiffusionMethod{
 	 * @param right
 	 * @return
 	 */
-	private HashMap<Integer, Point> initializePlate(int dimension, double top, double bottom, double left, double right)
+	private Map<Integer, LatticePoint> initializePlate(int dimension, double top, double bottom, double left, double right)
 	{
 		/*
 		creates a HashMap where each location is a number.  add 2 then square it.  You have an addressing scheme like this:
@@ -133,20 +134,26 @@ public class Simulation extends DiffusionMethod{
 		 * 
 		 */
 		int dim = (dimension+2) * (dimension + 2);
-		HashMap<Integer, Point> plate = new HashMap<Integer, Point>(dim);
+		Map<Integer, LatticePoint> plate = new HashMap<Integer, LatticePoint>(dim);
 		for (int i = 1; i <= dim; i++)
 		{
 			if (i < dimension) //top
-				plate.put(i, new Point(top));
+				plate.put(i, new LatticePoint(top));
 			else if (i >= dim - dimension - 1) //bottom side
-				plate.put(i, new Point(bottom));
+				plate.put(i, new LatticePoint(bottom));
 			else if (i % (dimension + 2) == 0) //right
-				plate.put(i, new Point(right));
+				plate.put(i, new LatticePoint(right));
 			else if (i-1 % (dimension + 2) == 0) //left
-				plate.put(i, new Point(left));
+				plate.put(i, new LatticePoint(left));
 			else 
-				plate.put(i, new Point(0));
+				plate.put(i, new LatticePoint(0));
 		}
 		return plate;
+	}
+	private class LatticePoint {
+		private double temp = 0.0;
+		public LatticePoint(double t) { temp = t;}
+		public double getTemp() { return temp; }
+		public void setTemp(double t) { temp = t; }
 	}
 }
