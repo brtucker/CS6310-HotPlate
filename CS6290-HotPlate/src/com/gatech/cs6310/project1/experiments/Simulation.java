@@ -1,7 +1,7 @@
 package com.gatech.cs6310.project1.experiments;
 
-import com.gatech.cs6310.project1.models.DiffusionMethod;
-import com.gatech.cs6310.project1.models.SimulationResult;
+import com.gatech.cs6310.project1.common.DiffusionMethod;
+import com.gatech.cs6310.project1.common.SimulationResult;
 
 public class Simulation{
 	public SimulationResult simulate(int dimension, double tempLeft,
