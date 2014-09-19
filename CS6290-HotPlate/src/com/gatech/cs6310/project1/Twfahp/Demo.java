@@ -1,5 +1,4 @@
 package com.gatech.cs6310.project1.Twfahp;
-
 import com.gatech.cs6310.project1.common.SimulationResult;
 
 public class Demo {
