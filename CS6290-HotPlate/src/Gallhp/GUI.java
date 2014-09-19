@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 //import Tpdahp.Simulation;
@@ -22,10 +23,6 @@ import common.SimulationResult;
 
 
 public class GUI extends JPanel{
-	
-	
-
-	
 	public static void addComponentsToPane(Container pane) {		
 
 		// drop down list
@@ -37,16 +34,16 @@ public class GUI extends JPanel{
 		
 		// input/output boxes
 		final JTextArea editTextDimension = new JTextArea("5");		
-		final JTextArea editTextLeft = new JTextArea("5");
-		final JTextArea editTextRight = new JTextArea("5");
-		final JTextArea editTextTop = new JTextArea("5");
-		final JTextArea editTextBottom = new JTextArea("5");
-		final JTextArea outputWindow = new JTextArea("Sample Output");
-		final JTextArea editTextMaxDuration = new JTextArea("maxDuration");
-		final JTextArea editTextMaxIterations = new JTextArea("maxIterations");
-		final JTextArea editTextStabilizationDelta = new JTextArea("stabilizationDelta");
+		final JTextArea editTextLeft = new JTextArea("100");
+		final JTextArea editTextRight = new JTextArea("100");
+		final JTextArea editTextTop = new JTextArea("100");
+		final JTextArea editTextBottom = new JTextArea("100");
 		
-		
+		final JTextArea outputWindow = new JTextArea("Sample Output");//"Sample Output"
+		final JTextArea editTextMaxDuration = new JTextArea("0"); //"maxDuration"
+		final JTextArea editTextMaxIterations = new JTextArea("0"); //"maxIterations"
+		final JTextArea editTextStabilizationDelta = new JTextArea("1.0"); //stabilizationDelta
+		//JScrollPane scroll = new JScrollPane(outputWindow, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS , JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
                 WINDOW_SIZE, WINDOW_SIZE);
 		
@@ -67,7 +64,6 @@ public class GUI extends JPanel{
 		pane.add(outputWindow);
 		pane.add(panelMiscInput);
 		pane.add(dg);
-
 		
 		// one of two sub panels for input values
 		// these are the "misc" ones...
@@ -78,16 +74,8 @@ public class GUI extends JPanel{
 		panelMiscInput.add(editTextStabilizationDelta);
 		panelMiscInput.add(Box.createRigidArea(new Dimension(0,MISCPANELSPACING)));
 		
-		
-		
-		
-
-
-		
 		Insets insets = pane.getInsets();
 		Dimension size = dg.getPreferredSize();
-			
-
 		
 		size = dg.getPreferredSize();
 		dg.setBounds(25 + insets.left, 50 + insets.top, size.width,
@@ -103,8 +91,8 @@ public class GUI extends JPanel{
 		size = runSimulationButton.getPreferredSize();
 		runSimulationButton.setBounds(145 + insets.left, 5 + insets.top, size.width, size.height);
 		size = outputWindow.getPreferredSize();
-		outputWindow.setBounds(20 + insets.left, 200 + insets.top, size.width + 395,
-				size.height + 140);
+		//scroll.setBounds(20 + insets.left, 200 + insets.top, size.width + 395, size.height + 140);
+		outputWindow.setBounds(20 + insets.left, 200 + insets.top, size.width + 395, 				size.height + 140);
 		size = editTextDimension.getPreferredSize();
 		editTextDimension.setBounds(175 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);
@@ -133,13 +121,23 @@ public class GUI extends JPanel{
 					simulation = new Twfahp.Simulation();
 				else if (simulationname.equals("Tpdohp"))
 					simulation = new Tpdohp.Simulation();
-//				int dimension = Integer.parseInt(editTextDimension.getText());
-//				double leftTemp = Double.parseDouble(editTextLeft.getText());
-//				double rightTemp = Double.parseDouble(editTextRight.getText());
-//				double topTemp = Double.parseDouble(editTextTop.getText());
-//				double bottomTemp = Double.parseDouble(editTextBottom.getText());
-				SimulationResult output = simulation.simulate(5, 5, 5, 5, 5);
-				//outputWindow.setText(output);
+				//there isn't bounds checking here.  should be between 0-100
+				int dimension = Integer.parseInt(editTextDimension.getText());
+				int maxDuration = Integer.parseInt(editTextMaxDuration.getText());
+				int maxIterations = Integer.parseInt(editTextMaxIterations.getText());
+				double stabilizationDelta = Double.parseDouble(editTextStabilizationDelta.getText());
+				double leftTemp = Double.parseDouble(editTextLeft.getText());
+				double rightTemp = Double.parseDouble(editTextRight.getText());
+				double topTemp = Double.parseDouble(editTextTop.getText());
+				double bottomTemp = Double.parseDouble(editTextBottom.getText());
+				simulation.maxDuration = maxDuration;
+				simulation.maxIterations = maxIterations;
+				simulation.stabilizationDelta= stabilizationDelta;
+				SimulationResult output = simulation.simulate(dimension, leftTemp, topTemp, rightTemp, bottomTemp);
+				outputWindow.setText(output.getPlate(output.iterations-1).toTableFormattedString());
+				outputWindow.append("\nIterations: " +output.iterations);
+				outputWindow.append("\nDuration: " + output.duration);
+				outputWindow.append("\nMemory Usage: " +output.memoryUsage);
 			}
 		});
 		
@@ -151,12 +149,6 @@ public class GUI extends JPanel{
 			}
 		});
 		
-		
-
-
-		
-		
-
 	}
 	
 	 /**
@@ -169,13 +161,8 @@ public class GUI extends JPanel{
      */
     private final static int BORDER_SIZE = 50;
 
- 
 
 	private static final int MISCPANELSPACING = 15;
-
 	private static final int PANELMISCINPUTX = 25;
-
-
-
 
 }
