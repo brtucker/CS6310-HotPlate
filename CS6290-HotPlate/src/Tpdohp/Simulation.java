@@ -20,7 +20,7 @@ public class Simulation extends DiffusionMethod{
 		
 		int iterationsMax = 0, iterations = 0;
 		if (maxIterations == 0)
-			iterationsMax = dimension * dimension * dimension * dimension;
+			iterationsMax = dimension * dimension * dimension * dimension  * dimension;
 		else
 			iterationsMax = maxIterations;
 		ArrayList<Plate> plates = new ArrayList<Plate>(); 
@@ -32,6 +32,7 @@ public class Simulation extends DiffusionMethod{
 			Plate plt = new Plate(dimension);
 			int d = (int)Math.sqrt(newPlate.size());
 			int outerCnt = 0;
+			double deltaTempAccumulation = 0.0;
 			for(int outerIndex = d + 1; outerCnt < d-2; outerIndex+=d)
 			{
 				int innerCnt= 0;
@@ -47,6 +48,7 @@ public class Simulation extends DiffusionMethod{
 							+ oldPlate.get(left).getTemp() + oldPlate.get(right).getTemp()) /4.0;
 					newPlate.get(cellpos).setTemp( t ); 
 					//System.out.println("outercnt: " + outerCnt + "\tinnerCnt: " + innerCnt);
+					deltaTempAccumulation += t - oldPlate.get(cellpos).getTemp(); 
 					plt.setCell(outerCnt, innerCnt, t);
 					innerCnt++;
 				}
@@ -58,9 +60,7 @@ public class Simulation extends DiffusionMethod{
 			iterations++;
 			
 			//Change check.  This picks the middle on odd values
-			double middleSpotDelta = newPlate.get( newPlate.size() /2 ).getTemp()
-						- oldPlate.get(newPlate.size() /2).getTemp();
-			if(middleSpotDelta > 0 && middleSpotDelta < stabilizationDelta)
+			if( deltaTempAccumulation / dimension < stabilizationDelta)
 			{
 				break; //delta is under the threshold exit the loop
 			}
@@ -138,13 +138,13 @@ public class Simulation extends DiffusionMethod{
 		Map<Integer, LatticePoint> plate = new HashMap<Integer, LatticePoint>(dim);
 		for (int i = 1; i <= dim; i++)
 		{
-			if (i < dimension) //top
+			if (i < dimension+2) //top
 				plate.put(i, new LatticePoint(top));
 			else if (i >= dim - dimension - 1) //bottom side
 				plate.put(i, new LatticePoint(bottom));
 			else if (i % (dimension + 2) == 0) //right
 				plate.put(i, new LatticePoint(right));
-			else if (i-1 % (dimension + 2) == 0) //left
+			else if ((i-1) % (dimension + 2) == 0) //left
 				plate.put(i, new LatticePoint(left));
 			else 
 				plate.put(i, new LatticePoint(0));
