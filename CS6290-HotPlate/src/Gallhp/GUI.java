@@ -9,6 +9,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -23,7 +24,8 @@ import common.SimulationResult;
 
 
 public class GUI extends JPanel{
-	public static void addComponentsToPane(Container pane) {		
+
+	public static void addComponentsToPane(final Container pane) {		
 
 		// drop down list
 		String[] experimentNames = { "Tpdahp", "Tpfahp", "Twfahp", "Tpdohp" };
@@ -44,7 +46,7 @@ public class GUI extends JPanel{
 		final JTextArea editTextMaxIterations = new JTextArea("0"); //"maxIterations"
 		final JTextArea editTextStabilizationDelta = new JTextArea("1.0"); //stabilizationDelta
 		JScrollPane scroll = new JScrollPane();
-		scroll.getViewport().add(outputWindow);
+		//scroll.getViewport().add(outputWindow);
 		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
                 WINDOW_SIZE, WINDOW_SIZE);
 		
@@ -66,7 +68,7 @@ public class GUI extends JPanel{
 		pane.add(panelMiscInput);
 		pane.add(dg);
 		
-		pane.add(scroll);
+		//pane.add(scroll);
 
 		
 		// one of two sub panels for input values
@@ -127,26 +129,18 @@ public class GUI extends JPanel{
 					simulation = new Twfahp.Simulation();
 				else if (simulationname.equals("Tpdohp"))
 					simulation = new Tpdohp.Simulation();
-				//there isn't bounds checking here.  should be between 0-100
-				
 
-				int dimension = 0;
-				try 
-				{ 
-					dimension = Integer.parseInt(editTextDimension.getText());
-					
-				} 
-				catch (NumberFormatException exp)
-				{
-					int test = 0;
-				};
-				int maxDuration = Integer.parseInt(editTextMaxDuration.getText());
-				int maxIterations = Integer.parseInt(editTextMaxIterations.getText());
+				
+				// convert input from string to int also validate that they are numbers from 0 - 100
+				int dimension = (int) validateInput(pane, editTextDimension);
+				int maxDuration = (int) validateInput(pane, editTextMaxDuration);
+				int maxIterations = (int) validateInput(pane, editTextMaxIterations); 
 				double stabilizationDelta = Double.parseDouble(editTextStabilizationDelta.getText());
-				double leftTemp = Double.parseDouble(editTextLeft.getText());
-				double rightTemp = Double.parseDouble(editTextRight.getText());
-				double topTemp = Double.parseDouble(editTextTop.getText());
-				double bottomTemp = Double.parseDouble(editTextBottom.getText());
+				double leftTemp = validateInput(pane, editTextLeft);
+				double rightTemp = validateInput(pane, editTextRight);
+				double topTemp = validateInput(pane, editTextTop);
+				double bottomTemp = validateInput(pane, editTextBottom);
+
 				simulation.maxDuration = maxDuration;
 				simulation.maxIterations = maxIterations;
 				simulation.stabilizationDelta= stabilizationDelta;
@@ -155,6 +149,26 @@ public class GUI extends JPanel{
 				outputWindow.append("\nIterations: " +output.iterations);
 				outputWindow.append("\nDuration: " + output.duration);
 				outputWindow.append("\nMemory Usage: " +output.memoryUsage);
+			}
+
+			private double validateInput(final Container pane,
+					final JTextArea editTextDimension) {
+				double input = 0;
+				try 
+				{
+					input = Integer.parseInt(editTextDimension.getText());
+					
+				} 
+				catch (NumberFormatException exp)
+				{
+					JOptionPane.showMessageDialog(pane,
+						    "Please enter a value from 0 - 100.");
+				};
+				if (input < LOWINPUTVALUE || input > HIINPUTVALUE){
+					JOptionPane.showMessageDialog(pane,
+						    "Please enter a value from 0 - 100.");
+				}
+				return input;
 			}
 
 
@@ -183,5 +197,9 @@ public class GUI extends JPanel{
 
 	private static final int MISCPANELSPACING = 15;
 	private static final int PANELMISCINPUTX = 25;
+	
+	protected static final int LOWINPUTVALUE = 0;
+
+	protected static final int HIINPUTVALUE = 100;
 
 }
