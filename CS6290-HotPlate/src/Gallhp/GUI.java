@@ -128,7 +128,18 @@ public class GUI extends JPanel{
 				else if (simulationname.equals("Tpdohp"))
 					simulation = new Tpdohp.Simulation();
 				//there isn't bounds checking here.  should be between 0-100
-				int dimension = Integer.parseInt(editTextDimension.getText());
+				
+
+				int dimension = 0;
+				try 
+				{ 
+					dimension = Integer.parseInt(editTextDimension.getText());
+					
+				} 
+				catch (NumberFormatException exp)
+				{
+					int test = 0;
+				};
 				int maxDuration = Integer.parseInt(editTextMaxDuration.getText());
 				int maxIterations = Integer.parseInt(editTextMaxIterations.getText());
 				double stabilizationDelta = Double.parseDouble(editTextStabilizationDelta.getText());
@@ -145,6 +156,8 @@ public class GUI extends JPanel{
 				outputWindow.append("\nDuration: " + output.duration);
 				outputWindow.append("\nMemory Usage: " +output.memoryUsage);
 			}
+
+
 		});
 		
 		simulationList.addActionListener(new ActionListener() {
