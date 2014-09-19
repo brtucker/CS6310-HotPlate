@@ -43,7 +43,8 @@ public class GUI extends JPanel{
 		final JTextArea editTextMaxDuration = new JTextArea("0"); //"maxDuration"
 		final JTextArea editTextMaxIterations = new JTextArea("0"); //"maxIterations"
 		final JTextArea editTextStabilizationDelta = new JTextArea("1.0"); //stabilizationDelta
-		JScrollPane scroll = new JScrollPane(outputWindow, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS , JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		JScrollPane scroll = new JScrollPane();
+		scroll.getViewport().add(outputWindow);
 		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
                 WINDOW_SIZE, WINDOW_SIZE);
 		
@@ -64,7 +65,9 @@ public class GUI extends JPanel{
 		pane.add(outputWindow);
 		pane.add(panelMiscInput);
 		pane.add(dg);
+		
 		pane.add(scroll);
+
 		
 		// one of two sub panels for input values
 		// these are the "misc" ones...
@@ -74,6 +77,8 @@ public class GUI extends JPanel{
 		panelMiscInput.add(Box.createRigidArea(new Dimension(0,MISCPANELSPACING)));
 		panelMiscInput.add(editTextStabilizationDelta);
 		panelMiscInput.add(Box.createRigidArea(new Dimension(0,MISCPANELSPACING)));
+		
+
 		
 		Insets insets = pane.getInsets();
 		Dimension size = dg.getPreferredSize();
@@ -93,7 +98,7 @@ public class GUI extends JPanel{
 		runSimulationButton.setBounds(145 + insets.left, 5 + insets.top, size.width, size.height);
 		size = outputWindow.getPreferredSize();
 		//scroll.setBounds(20 + insets.left, 200 + insets.top, size.width + 395, size.height + 140);
-		scroll.setBounds(20 + insets.left, 200 + insets.top, size.width + 395, 				size.height + 140);
+		outputWindow.setBounds(20 + insets.left, 200 + insets.top, size.width + 395,size.height + 140);
 		size = editTextDimension.getPreferredSize();
 		editTextDimension.setBounds(175 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);
