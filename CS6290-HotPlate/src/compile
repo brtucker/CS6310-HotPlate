@@ -1,0 +1,7 @@
+javac common/*.java
+javac Tpdahp/*.java
+javac Tpdohp/*.java
+javac Tpfahp/*.java
+javac Twfahp/*.java
+javac org/eclipse/wb/swing/*.java
+javac Gallhp/*.java
