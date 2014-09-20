@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.StyledDocument;
 
@@ -38,34 +39,35 @@ public class GUI extends JPanel{
 		JButton runSimulationButton = new JButton("Run");
 		
 		// input/output boxes
-		final JTextArea editTextDimension = new JTextArea("5");		
-		final JTextArea editTextLeft = new JTextArea("100");
-		final JTextArea editTextRight = new JTextArea("100");
-		final JTextArea editTextTop = new JTextArea("100");
-		final JTextArea editTextBottom = new JTextArea("100");
-		final JTextArea editTextDuration = new JTextArea("100");
-		final JTextArea editTextMemory = new JTextArea("100");
-
+		final JTextField editTextDimension = new JTextField("5");		
+		final JTextField editTextLeft = new JTextField("100");
+		final JTextField editTextRight = new JTextField("100");
+		final JTextField editTextTop = new JTextField("100");
+		final JTextField editTextBottom = new JTextField("100");
 		
+		
+		
+		
+		final JTextArea editTextDurationLabel = new JTextArea("Duration");
+
+		final JTextArea editTextMemoryLabel = new JTextArea("M");
+		final JTextArea editTextDuration = new JTextArea("");
+
+		final JTextArea editTextMemory = new JTextArea("sadf");
+
+		final JTextField textResults = new JTextField("");
 		
 		
 		// scrolling output window for displaying results
 		final JTextArea outputWindow = new JTextArea();
-		//outputWindow.setContentType("text/html");
-
 		outputWindow.setEditable(false);
 		JScrollPane scroll = new JScrollPane(outputWindow);
 		
 
 		
-		final JTextArea editTextMaxDuration = new JTextArea("0"); //"maxDuration"
-		final JTextArea editTextMaxIterations = new JTextArea("0"); //"maxIterations"
-		final JTextArea editTextStabilizationDelta = new JTextArea("1"); //stabilizationDelta
-
-		//scroll.getViewport().add(outputWindow);
-		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
-                WINDOW_SIZE, WINDOW_SIZE);
-
+		final JTextField editTextMaxDuration = new JTextField("0"); //"maxDuration"
+		final JTextField editTextMaxIterations = new JTextField("0"); //"maxIterations"
+		final JTextField editTextStabilizationDelta = new JTextField("1"); //stabilizationDelta
 		
 
 		
@@ -88,11 +90,8 @@ public class GUI extends JPanel{
 		pane.add(editTextDuration);
 		pane.add(scroll);
 		pane.add(panelMiscInput);
-		pane.add(dg);
-		
+		pane.add(textResults);
 
-		
-		//pane.add(scroll);
 
 		
 		// one of two sub panels for input values
@@ -107,14 +106,12 @@ public class GUI extends JPanel{
 
 		
 		Insets insets = pane.getInsets();
-		Dimension size = dg.getPreferredSize();
+		Dimension size;
 		
-		size = dg.getPreferredSize();
-		dg.setBounds(25 + insets.left, 50 + insets.top, size.width,
-				size.height);
+
 		
 		size = panelMiscInput.getPreferredSize();
-		panelMiscInput.setBounds(PANELMISCINPUTX + insets.left, 100 + insets.top, size.width,
+		panelMiscInput.setBounds(35 + insets.left, 60 + insets.top, size.width,
 				size.height);
 		
 		size = simulationList.getPreferredSize();
@@ -139,9 +136,9 @@ public class GUI extends JPanel{
 				size.height);
 		editTextBottom.setBounds(370 + insets.left, 125 + insets.top, size.width + 50,
 				size.height);
-		editTextMemory.setBounds(370 + insets.left, 10 + insets.top, size.width + 50,
+		editTextMemory.setBounds(370 + insets.left, 160 + insets.top, size.width + 50,
 				size.height);
-		editTextDuration.setBounds(370 + insets.left, 150 + insets.top, size.width + 50,
+		textResults.setBounds(270 + insets.left, 160 + insets.top, size.width + 50,
 				size.height);
 		
 		runSimulationButton.addActionListener(new ActionListener()
@@ -186,7 +183,7 @@ public class GUI extends JPanel{
 			}
 
 			private double validateInput(final Container pane,
-					final JTextArea editTextDimension) {
+					final JTextField editTextDimension) {
 				double input = 0;
 				try 
 				{
@@ -218,34 +215,7 @@ public class GUI extends JPanel{
 		
 	}
 	
-	class JTextWrapPane extends JTextPane {
 
-	    boolean wrapState = true;
-	    JTextArea j = new JTextArea();
-
-	    JTextWrapPane() {
-	        super();
-	    }
-
-	    public JTextWrapPane(StyledDocument p_oSdLog) {
-	        super(p_oSdLog);
-	    }
-
-
-	    public boolean getScrollableTracksViewportWidth() {
-	        return wrapState;
-	    }
-
-
-	    public void setLineWrap(boolean wrap) {
-	        wrapState = wrap;
-	    }
-
-
-	    public boolean getLineWrap(boolean wrap) {
-	        return wrapState;
-	    }
-	}  
 	
 	 /**
      * Size of the containing window in pixels
@@ -259,7 +229,7 @@ public class GUI extends JPanel{
 
 
 	private static final int MISCPANELSPACING = 15;
-	private static final int PANELMISCINPUTX = 25;
+
 	
 	protected static final int LOWINPUTVALUE = 0;
 
