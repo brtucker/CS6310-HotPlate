@@ -178,6 +178,7 @@ public class GUI extends JPanel{
 			
 
 				outputWindow.setText(results);
+
 				
 
 			}

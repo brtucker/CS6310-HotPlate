@@ -27,9 +27,11 @@ public class Main {
 
 
 		Insets insets = frame.getInsets();
+		frame.pack();
+		frame.setVisible(true);
 		frame.setSize(600 + insets.left + insets.right, 400 + insets.top
 				+ insets.bottom);
-		frame.setVisible(true);
+
 	}
 
 
