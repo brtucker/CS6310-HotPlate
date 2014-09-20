@@ -1,0 +1,5 @@
+chmod of the compile file to 777 or whatever execute permissions you want
+chmod 777 ./compile
+
+Then execute that compile program.
+./compile
