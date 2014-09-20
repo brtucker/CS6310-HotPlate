@@ -146,9 +146,9 @@ public class GUI extends JPanel{
 				simulation.stabilizationDelta= stabilizationDelta;
 				SimulationResult output = simulation.simulate(dimension, leftTemp, topTemp, rightTemp, bottomTemp);
 				outputWindow.setText(output.getPlate(output.iterations-1).toTableFormattedString());
-				outputWindow.append("\nIterations: " +output.iterations);
-				outputWindow.append("\nDuration: " + output.duration);
-				outputWindow.append("\nMemory Usage: " +output.memoryUsage);
+				outputWindow.append("\nIterations: " +output.iterations );
+				outputWindow.append("\nDuration: " + output.duration + " mS");
+				outputWindow.append("\nMemory Usage: " +output.memoryUsage+ " KB");
 			}
 
 			private double validateInput(final Container pane,
