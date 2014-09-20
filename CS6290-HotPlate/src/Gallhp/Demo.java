@@ -35,7 +35,7 @@ import javax.swing.JTextArea;
 
 public class Demo {
 
-	private JFrame frame;
+	private JFrame frmHotPlateSimulation;
 	private JTextField textFieldTop;
 	private JTextField textFieldLeft;
 	private JTextField textFieldRight;
@@ -56,7 +56,7 @@ public class Demo {
 			public void run() {
 				try {
 					Demo window = new Demo();
-					window.frame.setVisible(true);
+					window.frmHotPlateSimulation.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -76,15 +76,16 @@ public class Demo {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 534, 481);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmHotPlateSimulation = new JFrame();
+		frmHotPlateSimulation.setTitle("Hot Plate Simulation");
+		frmHotPlateSimulation.setBounds(100, 100, 534, 481);
+		frmHotPlateSimulation.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHotPlateSimulation.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Intial Edge Temperatures", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(65, 51, 235, 116);
-		frame.getContentPane().add(panel);
+		frmHotPlateSimulation.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		textFieldTop = new JTextField();
@@ -102,7 +103,7 @@ public class Demo {
 		JLabel lblLeft = new JLabel("Left");
 		lblLeft.setBounds(6, 41, 27, 14);
 		panel.add(lblLeft);
-		lblLeft.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLeft.setHorizontalAlignment(SwingConstants.LEFT);
 		lblLeft.setLabelFor(textFieldLeft);
 		
 		textFieldLeft = new JTextField();
@@ -112,9 +113,9 @@ public class Demo {
 		textFieldLeft.setColumns(10);
 		
 		JLabel lblRight = new JLabel("Right");
-		lblRight.setBounds(160, 41, 27, 14);
+		lblRight.setBounds(160, 41, 35, 14);
 		panel.add(lblRight);
-		lblRight.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblRight.setHorizontalAlignment(SwingConstants.LEFT);
 		lblRight.setLabelFor(textFieldRight);
 		
 		textFieldRight = new JTextField();
@@ -138,59 +139,59 @@ public class Demo {
 		final JComboBox comboBoxSimulationList = new JComboBox();
 		comboBoxSimulationList.setModel(new DefaultComboBoxModel(new String[] {"Tpdahp", "Tpfahp", "Twfahp", "Tpdohp"}));
 		comboBoxSimulationList.setBounds(113, 20, 68, 20);
-		frame.getContentPane().add(comboBoxSimulationList);
+		frmHotPlateSimulation.getContentPane().add(comboBoxSimulationList);
 		
 		JLabel lblSimulationName = new JLabel("Simulation Name");
 		lblSimulationName.setBounds(10, 23, 96, 14);
-		frame.getContentPane().add(lblSimulationName);
+		frmHotPlateSimulation.getContentPane().add(lblSimulationName);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Options", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(340, 43, 167, 92);
-		frame.getContentPane().add(panel_1);
+		panel_1.setBounds(310, 43, 197, 92);
+		frmHotPlateSimulation.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
 		textFieldMaxIterations = new JTextField();
-		textFieldMaxIterations.setBounds(101, 16, 60, 20);
+		textFieldMaxIterations.setBounds(127, 13, 60, 20);
 		panel_1.add(textFieldMaxIterations);
-		textFieldMaxIterations.setText("0");
+		textFieldMaxIterations.setText("500");
 		textFieldMaxIterations.setColumns(10);
 		
 		textFieldMaxDuration = new JTextField();
-		textFieldMaxDuration.setBounds(101, 40, 60, 20);
+		textFieldMaxDuration.setBounds(127, 37, 60, 20);
 		panel_1.add(textFieldMaxDuration);
-		textFieldMaxDuration.setText("0");
+		textFieldMaxDuration.setText("300");
 		textFieldMaxDuration.setColumns(10);
 		
 		textFieldStabilDelta = new JTextField();
-		textFieldStabilDelta.setBounds(101, 65, 60, 20);
+		textFieldStabilDelta.setBounds(127, 62, 60, 20);
 		panel_1.add(textFieldStabilDelta);
 		textFieldStabilDelta.setText("1.0");
 		textFieldStabilDelta.setColumns(10);
 		
 		JLabel lblMaxIterations = new JLabel("Max Iterations");
-		lblMaxIterations.setBounds(16, 22, 79, 14);
+		lblMaxIterations.setBounds(16, 22, 101, 14);
 		panel_1.add(lblMaxIterations);
 		lblMaxIterations.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lblMaxDuration = new JLabel("Max Duration");
-		lblMaxDuration.setBounds(16, 46, 79, 14);
+		JLabel lblMaxDuration = new JLabel("Max Duration (Sec)");
+		lblMaxDuration.setBounds(6, 46, 111, 14);
 		panel_1.add(lblMaxDuration);
 		lblMaxDuration.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JLabel lblStabilizationDelta = new JLabel("Stabilization Delta");
-		lblStabilizationDelta.setBounds(6, 68, 92, 14);
+		lblStabilizationDelta.setBounds(6, 68, 111, 14);
 		panel_1.add(lblStabilizationDelta);
 		lblStabilizationDelta.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Results", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel_2.setBounds(10, 162, 501, 264);
-		frame.getContentPane().add(panel_2);
+		frmHotPlateSimulation.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
 		JLabel lblIterations = new JLabel("Iterations");
-		lblIterations.setBounds(16, 22, 79, 14);
+		lblIterations.setBounds(10, 19, 79, 14);
 		panel_2.add(lblIterations);
 		lblIterations.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -206,13 +207,13 @@ public class Demo {
 		textFieldDuration.setText("0");
 		textFieldDuration.setColumns(10);
 		
-		JLabel lblDuration = new JLabel("Duration");
-		lblDuration.setBounds(171, 22, 79, 14);
+		JLabel lblDuration = new JLabel("Duration (ms)");
+		lblDuration.setBounds(167, 19, 79, 14);
 		panel_2.add(lblDuration);
 		lblDuration.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JLabel lblMemoryUsage = new JLabel("Memory Usage");
-		lblMemoryUsage.setBounds(340, 19, 92, 14);
+		lblMemoryUsage.setBounds(333, 19, 92, 14);
 		panel_2.add(lblMemoryUsage);
 		lblMemoryUsage.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -295,20 +296,20 @@ public class Demo {
 
 			}
 		});
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{comboBoxSimulationList, textFieldDimension, textFieldTop, textFieldLeft, textFieldRight, textFieldBottom, textFieldMaxIterations, textFieldMaxDuration, textFieldStabilDelta, btnRun}));
+		frmHotPlateSimulation.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{comboBoxSimulationList, textFieldDimension, textFieldTop, textFieldLeft, textFieldRight, textFieldBottom, textFieldMaxIterations, textFieldMaxDuration, textFieldStabilDelta, btnRun}));
 		btnRun.setBounds(416, 140, 89, 23);
-		frame.getContentPane().add(btnRun);
+		frmHotPlateSimulation.getContentPane().add(btnRun);
 		
 		JLabel lblPlateDimension = new JLabel("Plate Dimension");
 		lblPlateDimension.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPlateDimension.setBounds(191, 20, 102, 20);
-		frame.getContentPane().add(lblPlateDimension);
+		frmHotPlateSimulation.getContentPane().add(lblPlateDimension);
 		
 		textFieldDimension = new JTextField();
-		textFieldDimension.setText("100");
+		textFieldDimension.setText("25");
 		textFieldDimension.setColumns(10);
 		textFieldDimension.setBounds(303, 20, 41, 20);
-		frame.getContentPane().add(textFieldDimension);
+		frmHotPlateSimulation.getContentPane().add(textFieldDimension);
 		
 		
 	}
