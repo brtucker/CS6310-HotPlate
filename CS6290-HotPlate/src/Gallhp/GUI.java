@@ -43,6 +43,10 @@ public class GUI extends JPanel{
 		final JTextArea editTextRight = new JTextArea("100");
 		final JTextArea editTextTop = new JTextArea("100");
 		final JTextArea editTextBottom = new JTextArea("100");
+		final JTextArea editTextDuration = new JTextArea("100");
+		final JTextArea editTextMemory = new JTextArea("100");
+
+		
 		
 		
 		// scrolling output window for displaying results
@@ -80,6 +84,8 @@ public class GUI extends JPanel{
 		pane.add(editTextTop);
 		pane.add(editTextRight);
 		pane.add(editTextLeft);
+		pane.add(editTextMemory);
+		pane.add(editTextDuration);
 		pane.add(scroll);
 		pane.add(panelMiscInput);
 		pane.add(dg);
@@ -118,6 +124,7 @@ public class GUI extends JPanel{
 		runSimulationButton.setBounds(145 + insets.left, 5 + insets.top, size.width, size.height);
 
 		size = outputWindow.getPreferredSize();
+		
 		outputWindow.setBounds(insets.left,insets.top,size.width + 1000 ,size.height);	
 		size = scroll.getPreferredSize();
 		scroll.setBounds(25 + insets.left, 200 + insets.top, size.width + 450,size.height + 140);
@@ -132,7 +139,10 @@ public class GUI extends JPanel{
 				size.height);
 		editTextBottom.setBounds(370 + insets.left, 125 + insets.top, size.width + 50,
 				size.height);
-		
+		editTextMemory.setBounds(370 + insets.left, 10 + insets.top, size.width + 50,
+				size.height);
+		editTextDuration.setBounds(370 + insets.left, 150 + insets.top, size.width + 50,
+				size.height);
 		
 		runSimulationButton.addActionListener(new ActionListener()
 		{
