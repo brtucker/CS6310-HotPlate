@@ -28,11 +28,12 @@ public class Simulation extends DiffusionMethod{
 		while(iterations < iterationsMax)
 		{
 			Plate plt = new Plate(dimension);
+			float deltaTempAccumulation = 0.0f;
 			for(int outerIndex = 1; outerIndex <= dimension; outerIndex++){
 				for(int innerIndex = 1; innerIndex <= dimension; innerIndex++){
 					newPlate[outerIndex][innerIndex] = (oldPlate[outerIndex + 1][innerIndex] + oldPlate[outerIndex - 1][innerIndex]
 														+ oldPlate[outerIndex][innerIndex + 1] + oldPlate[outerIndex][innerIndex-1]) /4.0f;
-					
+					deltaTempAccumulation += newPlate[outerIndex][innerIndex] - oldPlate[outerIndex][innerIndex];
 					plt.setCell(outerIndex-1, innerIndex-1, newPlate[outerIndex][innerIndex] );
 				}
 			}
@@ -40,9 +41,12 @@ public class Simulation extends DiffusionMethod{
 			//Iteration count
 			iterations++;
 			
-			//Change check.  This picks the middle on odd values
-			float middleSpotDelta = newPlate[(dimension + 2) / 2][(dimension + 2) /2] - oldPlate[(dimension + 2)/2][(dimension + 2)/2];
-			if(middleSpotDelta > 0 && middleSpotDelta < stabilizationDelta)
+			//if we are out of time then exit.
+			durationSeconds = (int)(System.currentTimeMillis() - startTime) / 1000;
+			if (maxDuration > 0 && durationSeconds > maxDuration)
+				break;
+			//Change check.
+			if( deltaTempAccumulation / dimension < stabilizationDelta)
 			{
 				break; //delta is under the threshold exit the loop
 			}
@@ -54,9 +58,6 @@ public class Simulation extends DiffusionMethod{
 				oldPlate = newPlate;
 				newPlate = tempPlate;
 			}
-			durationSeconds = (int)(System.currentTimeMillis() - startTime) / 1000;
-			if (maxDuration > 0 && durationSeconds > maxDuration)
-				break;
 		}
 		SimulationResult sr = new SimulationResult(iterations);
 		sr.duration = (int) (System.currentTimeMillis() - startTime)   ;
@@ -72,6 +73,9 @@ public class Simulation extends DiffusionMethod{
 		return sr;
 	}
 	
+	/*
+	 * Write the grid as a string separating each cell by a tab and each row by a newline
+	 */
 	public String toString() {
 		String result = "";
 		int dimension = newPlate.length - 1;
