@@ -1,4 +1,5 @@
 package Gallhp;
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
@@ -44,12 +45,18 @@ public class GUI extends JPanel{
 		final JTextArea outputWindow = new JTextArea("Sample Output");//"Sample Output"
 		final JTextArea editTextMaxDuration = new JTextArea("0"); //"maxDuration"
 		final JTextArea editTextMaxIterations = new JTextArea("0"); //"maxIterations"
-		final JTextArea editTextStabilizationDelta = new JTextArea("1.0"); //stabilizationDelta
+		final JTextArea editTextStabilizationDelta = new JTextArea("1"); //stabilizationDelta
 		JScrollPane scroll = new JScrollPane();
 		//scroll.getViewport().add(outputWindow);
 		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
                 WINDOW_SIZE, WINDOW_SIZE);
+		JPanel topPanel = new JPanel();
+		topPanel.setLayout( new BorderLayout() );
 		
+
+		
+		scroll.getViewport().add(outputWindow);
+		topPanel.add(scroll, BorderLayout.CENTER);
 		
 		// panels
 		JPanel panelMiscInput = new JPanel();
@@ -67,6 +74,8 @@ public class GUI extends JPanel{
 		pane.add(outputWindow);
 		pane.add(panelMiscInput);
 		pane.add(dg);
+		
+		pane.add(topPanel);
 		
 		//pane.add(scroll);
 
