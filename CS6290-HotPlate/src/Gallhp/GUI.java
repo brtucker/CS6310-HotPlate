@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 //import Tpdahp.Simulation;
 //import Tpfahp.Simulation;
@@ -42,11 +43,18 @@ public class GUI extends JPanel{
 		final JTextArea editTextTop = new JTextArea("100");
 		final JTextArea editTextBottom = new JTextArea("100");
 		
-		final JTextArea outputWindow = new JTextArea("Sample Output");//"Sample Output"
+		final JTextPane outputWindow = new JTextPane();//"Sample Output"
+		
+		outputWindow.setContentType("text/html");
+		outputWindow.setEditable(false);
+		JScrollPane scroll = new JScrollPane(outputWindow);
+		//scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	        //news.add(scroll);  
+		
 		final JTextArea editTextMaxDuration = new JTextArea("0"); //"maxDuration"
 		final JTextArea editTextMaxIterations = new JTextArea("0"); //"maxIterations"
 		final JTextArea editTextStabilizationDelta = new JTextArea("1"); //stabilizationDelta
-		JScrollPane scroll = new JScrollPane();
+
 		//scroll.getViewport().add(outputWindow);
 		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
                 WINDOW_SIZE, WINDOW_SIZE);
@@ -55,8 +63,7 @@ public class GUI extends JPanel{
 		
 
 		
-		scroll.getViewport().add(outputWindow);
-		topPanel.add(scroll, BorderLayout.CENTER);
+
 		
 		// panels
 		JPanel panelMiscInput = new JPanel();
@@ -71,7 +78,7 @@ public class GUI extends JPanel{
 		pane.add(editTextTop);
 		pane.add(editTextRight);
 		pane.add(editTextLeft);
-		pane.add(outputWindow);
+		pane.add(scroll);
 		pane.add(panelMiscInput);
 		pane.add(dg);
 		
@@ -108,8 +115,8 @@ public class GUI extends JPanel{
 		size = runSimulationButton.getPreferredSize();
 		runSimulationButton.setBounds(145 + insets.left, 5 + insets.top, size.width, size.height);
 		size = outputWindow.getPreferredSize();
-		//scroll.setBounds(20 + insets.left, 200 + insets.top, size.width + 395, size.height + 140);
-		outputWindow.setBounds(20 + insets.left, 200 + insets.top, size.width + 395,size.height + 140);
+		
+		scroll.setBounds(25 + insets.left, 200 + insets.top, size.width + 395,size.height + 140);
 		size = editTextDimension.getPreferredSize();
 		editTextDimension.setBounds(175 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);
@@ -155,9 +162,13 @@ public class GUI extends JPanel{
 				simulation.stabilizationDelta= stabilizationDelta;
 				SimulationResult output = simulation.simulate(dimension, leftTemp, topTemp, rightTemp, bottomTemp);
 				outputWindow.setText(output.getPlate(output.iterations-1).toTableFormattedString());
-				outputWindow.append("\nIterations: " +output.iterations );
-				outputWindow.append("\nDuration: " + output.duration + " mS");
-				outputWindow.append("\nMemory Usage: " +output.memoryUsage+ " KB");
+				
+				
+				
+				
+				//outputWindow.setText("\nIterations: " +output.iterations );
+				//outputWindow.append("\nDuration: " + output.duration + " mS");
+				//outputWindow.append("\nMemory Usage: " +output.memoryUsage+ " KB");
 			}
 
 			private double validateInput(final Container pane,
