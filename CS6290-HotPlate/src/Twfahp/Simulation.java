@@ -1,10 +1,6 @@
 package Twfahp;
 import common.*;
 
-import common.DiffusionMethod;
-import common.Plate;
-import common.SimulationResult;
-
 import java.util.ArrayList;
 
 public class Simulation extends DiffusionMethod {
@@ -22,7 +18,7 @@ public class Simulation extends DiffusionMethod {
 		
 		int iterationsMax = 0, iterations = 0;
 		if (maxIterations == 0)
-			iterationsMax = dimension * dimension * dimension * dimension;
+			iterationsMax =   dimension * dimension * dimension * dimension;
 		else
 			iterationsMax = maxIterations;
 		ArrayList<Plate> plates = new ArrayList<Plate>(); 
@@ -58,13 +54,19 @@ public class Simulation extends DiffusionMethod {
 				oldPlate = newPlate;
 				newPlate = tempPlate;
 			}
-			durationSeconds = (int)(System.currentTimeMillis() - startTime) * 1000;
+			durationSeconds = (int)(System.currentTimeMillis() - startTime) / 1000;
 			if (maxDuration > 0 && durationSeconds > maxDuration)
 				break;
 		}
 		SimulationResult sr = new SimulationResult(iterations);
-		sr.duration = (int)(System.currentTimeMillis() - startTime) * 1000;
-		sr.memoryUsage = Runtime.getRuntime().totalMemory() - startingMemory;
+		sr.duration = (int) (System.currentTimeMillis() - startTime)   ;
+		//sr.memoryUsage = Runtime.getRuntime().totalMemory() - startingMemory;
+		
+		Runtime runtime = Runtime.getRuntime();
+		runtime.gc();
+		long memory = runtime.totalMemory() - runtime.freeMemory();
+		sr.memoryUsage = memory / 1024; 
+
 		for (int i = 0; i < iterations; i++)
 			sr.setPlate(i, plates.get(i));
 		return sr;
