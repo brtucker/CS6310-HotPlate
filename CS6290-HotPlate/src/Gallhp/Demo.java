@@ -137,11 +137,11 @@ public class Demo {
 		
 		final JComboBox comboBoxSimulationList = new JComboBox();
 		comboBoxSimulationList.setModel(new DefaultComboBoxModel(new String[] {"Tpdahp", "Tpfahp", "Twfahp", "Tpdohp"}));
-		comboBoxSimulationList.setBounds(93, 20, 68, 20);
+		comboBoxSimulationList.setBounds(113, 20, 68, 20);
 		frame.getContentPane().add(comboBoxSimulationList);
 		
 		JLabel lblSimulationName = new JLabel("Simulation Name");
-		lblSimulationName.setBounds(10, 23, 79, 14);
+		lblSimulationName.setBounds(10, 23, 96, 14);
 		frame.getContentPane().add(lblSimulationName);
 		
 		JPanel panel_1 = new JPanel();
@@ -301,13 +301,13 @@ public class Demo {
 		
 		JLabel lblPlateDimension = new JLabel("Plate Dimension");
 		lblPlateDimension.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPlateDimension.setBounds(171, 20, 78, 20);
+		lblPlateDimension.setBounds(191, 20, 102, 20);
 		frame.getContentPane().add(lblPlateDimension);
 		
 		textFieldDimension = new JTextField();
 		textFieldDimension.setText("100");
 		textFieldDimension.setColumns(10);
-		textFieldDimension.setBounds(259, 20, 41, 20);
+		textFieldDimension.setBounds(303, 20, 41, 20);
 		frame.getContentPane().add(textFieldDimension);
 		
 		
