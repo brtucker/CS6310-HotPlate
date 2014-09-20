@@ -50,7 +50,7 @@ public class GUI extends JPanel{
 		
 		final JTextArea editTextDurationLabel = new JTextArea("Duration");
 
-		final JTextArea editTextMemoryLabel = new JTextArea("M");
+		final JTextArea editTextMemoryLabel = new JTextArea("Memory");
 		final JTextArea editTextDuration = new JTextArea("");
 
 		final JTextArea editTextMemory = new JTextArea("sadf");
@@ -122,9 +122,9 @@ public class GUI extends JPanel{
 
 		size = outputWindow.getPreferredSize();
 		
-		outputWindow.setBounds(insets.left,insets.top,size.width + 1000 ,size.height);	
+		outputWindow.setBounds(insets.left,insets.top,size.width ,size.height);	
 		size = scroll.getPreferredSize();
-		scroll.setBounds(25 + insets.left, 200 + insets.top, size.width + 450,size.height + 140);
+		scroll.setBounds(25 + insets.left, 200 + insets.top, size.width + 540,size.height + 140);
 		size = editTextDimension.getPreferredSize();
 		editTextDimension.setBounds(175 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);
