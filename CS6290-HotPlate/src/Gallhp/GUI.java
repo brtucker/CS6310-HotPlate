@@ -43,13 +43,13 @@ public class GUI extends JPanel{
 		final JTextArea editTextTop = new JTextArea("100");
 		final JTextArea editTextBottom = new JTextArea("100");
 		
-		final JTextPane outputWindow = new JTextPane();//"Sample Output"
 		
+		// scrolling output window for displaying results
+		final JTextPane outputWindow = new JTextPane();
 		outputWindow.setContentType("text/html");
 		outputWindow.setEditable(false);
 		JScrollPane scroll = new JScrollPane(outputWindow);
-		//scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-	        //news.add(scroll);  
+
 		
 		final JTextArea editTextMaxDuration = new JTextArea("0"); //"maxDuration"
 		final JTextArea editTextMaxIterations = new JTextArea("0"); //"maxIterations"
@@ -161,14 +161,14 @@ public class GUI extends JPanel{
 				simulation.maxIterations = maxIterations;
 				simulation.stabilizationDelta= stabilizationDelta;
 				SimulationResult output = simulation.simulate(dimension, leftTemp, topTemp, rightTemp, bottomTemp);
-				outputWindow.setText(output.getPlate(output.iterations-1).toTableFormattedString());
+
+				String results = output.getPlate(output.iterations-1).toTableFormattedString();
+				results = results + "\nDuration: " + output.duration + " mS" + "\nMemory Usage: " +output.memoryUsage+ " KB";
+
+
+				outputWindow.setText(results);
 				
-				
-				
-				
-				//outputWindow.setText("\nIterations: " +output.iterations );
-				//outputWindow.append("\nDuration: " + output.duration + " mS");
-				//outputWindow.append("\nMemory Usage: " +output.memoryUsage+ " KB");
+
 			}
 
 			private double validateInput(final Container pane,
