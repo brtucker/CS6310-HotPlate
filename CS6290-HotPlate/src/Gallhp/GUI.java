@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.text.StyledDocument;
 
 //import Tpdahp.Simulation;
 //import Tpfahp.Simulation;
@@ -45,10 +46,12 @@ public class GUI extends JPanel{
 		
 		
 		// scrolling output window for displaying results
-		final JTextPane outputWindow = new JTextPane();
-		outputWindow.setContentType("text/html");
+		final JTextArea outputWindow = new JTextArea();
+		//outputWindow.setContentType("text/html");
+
 		outputWindow.setEditable(false);
 		JScrollPane scroll = new JScrollPane(outputWindow);
+		
 
 		
 		final JTextArea editTextMaxDuration = new JTextArea("0"); //"maxDuration"
@@ -58,8 +61,7 @@ public class GUI extends JPanel{
 		//scroll.getViewport().add(outputWindow);
 		DrawnGrid dg = new DrawnGrid(550, BORDER_SIZE, 
                 WINDOW_SIZE, WINDOW_SIZE);
-		JPanel topPanel = new JPanel();
-		topPanel.setLayout( new BorderLayout() );
+
 		
 
 		
@@ -82,7 +84,7 @@ public class GUI extends JPanel{
 		pane.add(panelMiscInput);
 		pane.add(dg);
 		
-		pane.add(topPanel);
+
 		
 		//pane.add(scroll);
 
@@ -114,9 +116,11 @@ public class GUI extends JPanel{
 				size.height);
 		size = runSimulationButton.getPreferredSize();
 		runSimulationButton.setBounds(145 + insets.left, 5 + insets.top, size.width, size.height);
+
 		size = outputWindow.getPreferredSize();
-		
-		scroll.setBounds(25 + insets.left, 200 + insets.top, size.width + 395,size.height + 140);
+		outputWindow.setBounds(insets.left,insets.top,size.width + 1000 ,size.height);	
+		size = scroll.getPreferredSize();
+		scroll.setBounds(25 + insets.left, 200 + insets.top, size.width + 450,size.height + 140);
 		size = editTextDimension.getPreferredSize();
 		editTextDimension.setBounds(175 + insets.left, 75 + insets.top, size.width + 50,
 				size.height);
@@ -164,7 +168,7 @@ public class GUI extends JPanel{
 
 				String results = output.getPlate(output.iterations-1).toTableFormattedString();
 				results = results + "\nDuration: " + output.duration + " mS" + "\nMemory Usage: " +output.memoryUsage+ " KB";
-
+			
 
 				outputWindow.setText(results);
 				
@@ -203,6 +207,35 @@ public class GUI extends JPanel{
 		});
 		
 	}
+	
+	class JTextWrapPane extends JTextPane {
+
+	    boolean wrapState = true;
+	    JTextArea j = new JTextArea();
+
+	    JTextWrapPane() {
+	        super();
+	    }
+
+	    public JTextWrapPane(StyledDocument p_oSdLog) {
+	        super(p_oSdLog);
+	    }
+
+
+	    public boolean getScrollableTracksViewportWidth() {
+	        return wrapState;
+	    }
+
+
+	    public void setLineWrap(boolean wrap) {
+	        wrapState = wrap;
+	    }
+
+
+	    public boolean getLineWrap(boolean wrap) {
+	        return wrapState;
+	    }
+	}  
 	
 	 /**
      * Size of the containing window in pixels
