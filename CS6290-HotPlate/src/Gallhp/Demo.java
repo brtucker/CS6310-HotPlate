@@ -139,11 +139,12 @@ public class Demo {
 		
 		final JComboBox comboBoxSimulationList = new JComboBox();
 		comboBoxSimulationList.setModel(new DefaultComboBoxModel(new String[] {"Tpdahp", "Tpfahp", "Twfahp", "Tpdohp"}));
-		comboBoxSimulationList.setBounds(126, 20, 97, 20);
+		comboBoxSimulationList.setBounds(164, 20, 97, 20);
 		frmHotPlateSimulation.getContentPane().add(comboBoxSimulationList);
 		
 		JLabel lblSimulationName = new JLabel("Simulation Name");
-		lblSimulationName.setBounds(10, 23, 96, 14);
+		lblSimulationName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSimulationName.setBounds(10, 23, 144, 14);
 		frmHotPlateSimulation.getContentPane().add(lblSimulationName);
 		
 		JPanel panel_1 = new JPanel();
@@ -306,13 +307,13 @@ public class Demo {
 		
 		JLabel lblPlateDimension = new JLabel("Plate Dimension");
 		lblPlateDimension.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPlateDimension.setBounds(233, 20, 102, 20);
+		lblPlateDimension.setBounds(271, 20, 128, 20);
 		frmHotPlateSimulation.getContentPane().add(lblPlateDimension);
 		
 		textFieldDimension = new JTextField();
 		textFieldDimension.setText("25");
 		textFieldDimension.setColumns(10);
-		textFieldDimension.setBounds(345, 20, 41, 20);
+		textFieldDimension.setBounds(409, 20, 41, 20);
 		frmHotPlateSimulation.getContentPane().add(textFieldDimension);
 		
 		
