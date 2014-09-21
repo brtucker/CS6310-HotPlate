@@ -32,6 +32,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
 import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
 
 public class Demo {
 
@@ -222,10 +223,13 @@ public class Demo {
 		panel_2.add(textFieldMemUsage);
 		textFieldMemUsage.setText("1.0");
 		textFieldMemUsage.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(6, 49, 489, 208);
+		panel_2.add(scrollPane);
 
 		final JTextArea textAreaResults = new JTextArea();
-		textAreaResults.setBounds(6, 49, 489, 208);
-		panel_2.add(textAreaResults);
+		scrollPane.setViewportView(textAreaResults);
 		
 		JButton btnRun = new JButton("Run");
 		btnRun.addActionListener(new ActionListener() {
