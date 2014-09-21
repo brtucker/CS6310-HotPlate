@@ -25,7 +25,7 @@ public class Simulation extends DiffusionMethod{
 		+---+-----+------+------+-----+
 		|1  |  2  |   3  |   4  |   5 |
 		+-----------------------------+
-		|  6|  7  |  8   |   9  | 10  |
+		| 6 |  7  |  8   |   9  | 10  |
 		+-----------------------------+
 		|12 | 12  |   13 |  14  | 15  |
 		+-----------------------------+
@@ -39,7 +39,7 @@ public class Simulation extends DiffusionMethod{
 		
 		int iterationsMax = 0, iterations = 0;
 		if (maxIterations == 0)
-			iterationsMax =   dimension * dimension * dimension * dimension;
+			iterationsMax =   500;
 		else
 			iterationsMax = maxIterations;
 		ArrayList<Plate> plates = new ArrayList<Plate>(); 
