@@ -204,18 +204,18 @@ public class Demo {
 		textFieldIterations.setColumns(10);
 		
 		textFieldDuration = new JTextField();
-		textFieldDuration.setBounds(322, 16, 60, 20);
+		textFieldDuration.setBounds(304, 16, 60, 20);
 		panel_2.add(textFieldDuration);
 		textFieldDuration.setText("0");
 		textFieldDuration.setColumns(10);
 		
 		JLabel lblDuration = new JLabel("Duration (ms)");
-		lblDuration.setBounds(239, 19, 79, 14);
+		lblDuration.setBounds(198, 19, 102, 14);
 		panel_2.add(lblDuration);
 		lblDuration.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JLabel lblMemoryUsage = new JLabel("Memory Usage (KB)");
-		lblMemoryUsage.setBounds(392, 21, 118, 14);
+		lblMemoryUsage.setBounds(374, 21, 136, 14);
 		panel_2.add(lblMemoryUsage);
 		lblMemoryUsage.setHorizontalAlignment(SwingConstants.RIGHT);
 		
