@@ -139,7 +139,7 @@ public class Demo {
 		
 		final JComboBox comboBoxSimulationList = new JComboBox();
 		comboBoxSimulationList.setModel(new DefaultComboBoxModel(new String[] {"Tpdahp", "Tpfahp", "Twfahp", "Tpdohp"}));
-		comboBoxSimulationList.setBounds(126, 20, 68, 20);
+		comboBoxSimulationList.setBounds(126, 20, 97, 20);
 		frmHotPlateSimulation.getContentPane().add(comboBoxSimulationList);
 		
 		JLabel lblSimulationName = new JLabel("Simulation Name");
