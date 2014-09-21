@@ -193,29 +193,29 @@ public class Demo {
 		panel_2.setLayout(null);
 		
 		JLabel lblIterations = new JLabel("Iterations");
-		lblIterations.setBounds(6, 19, 79, 14);
+		lblIterations.setBounds(6, 21, 79, 14);
 		panel_2.add(lblIterations);
 		lblIterations.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		textFieldIterations = new JTextField();
-		textFieldIterations.setBounds(95, 16, 60, 20);
+		textFieldIterations.setBounds(95, 18, 60, 20);
 		panel_2.add(textFieldIterations);
 		textFieldIterations.setText("0");
 		textFieldIterations.setColumns(10);
 		
 		textFieldDuration = new JTextField();
-		textFieldDuration.setBounds(304, 16, 60, 20);
+		textFieldDuration.setBounds(281, 18, 60, 20);
 		panel_2.add(textFieldDuration);
 		textFieldDuration.setText("0");
 		textFieldDuration.setColumns(10);
 		
 		JLabel lblDuration = new JLabel("Duration (ms)");
-		lblDuration.setBounds(198, 19, 102, 14);
+		lblDuration.setBounds(175, 21, 102, 14);
 		panel_2.add(lblDuration);
 		lblDuration.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		JLabel lblMemoryUsage = new JLabel("Memory Usage (KB)");
-		lblMemoryUsage.setBounds(374, 21, 136, 14);
+		lblMemoryUsage.setBounds(360, 21, 150, 14);
 		panel_2.add(lblMemoryUsage);
 		lblMemoryUsage.setHorizontalAlignment(SwingConstants.RIGHT);
 		
