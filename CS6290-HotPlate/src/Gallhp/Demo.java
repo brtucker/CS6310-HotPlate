@@ -78,7 +78,7 @@ public class Demo {
 	 */
 	private void initialize() {
 		frmHotPlateSimulation = new JFrame();
-		frmHotPlateSimulation.setTitle("Hot Plate Simulation");
+		frmHotPlateSimulation.setTitle("Project 1: Heated Plate Simulation");
 		frmHotPlateSimulation.setBounds(100, 100, 534, 481);
 		frmHotPlateSimulation.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHotPlateSimulation.getContentPane().setLayout(null);
@@ -192,29 +192,29 @@ public class Demo {
 		panel_2.setLayout(null);
 		
 		JLabel lblIterations = new JLabel("Iterations");
-		lblIterations.setBounds(10, 19, 79, 14);
+		lblIterations.setBounds(6, 19, 79, 14);
 		panel_2.add(lblIterations);
 		lblIterations.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		textFieldIterations = new JTextField();
-		textFieldIterations.setBounds(101, 16, 60, 20);
+		textFieldIterations.setBounds(95, 16, 60, 20);
 		panel_2.add(textFieldIterations);
 		textFieldIterations.setText("0");
 		textFieldIterations.setColumns(10);
 		
 		textFieldDuration = new JTextField();
-		textFieldDuration.setBounds(256, 16, 60, 20);
+		textFieldDuration.setBounds(248, 16, 60, 20);
 		panel_2.add(textFieldDuration);
 		textFieldDuration.setText("0");
 		textFieldDuration.setColumns(10);
 		
 		JLabel lblDuration = new JLabel("Duration (ms)");
-		lblDuration.setBounds(167, 19, 79, 14);
+		lblDuration.setBounds(165, 19, 79, 14);
 		panel_2.add(lblDuration);
 		lblDuration.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lblMemoryUsage = new JLabel("Memory Usage");
-		lblMemoryUsage.setBounds(333, 19, 92, 14);
+		JLabel lblMemoryUsage = new JLabel("Memory Usage (KB)");
+		lblMemoryUsage.setBounds(307, 19, 118, 14);
 		panel_2.add(lblMemoryUsage);
 		lblMemoryUsage.setHorizontalAlignment(SwingConstants.RIGHT);
 		
